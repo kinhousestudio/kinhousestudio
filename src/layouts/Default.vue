@@ -74,8 +74,8 @@ text-decoration: none;
 
 .nav__link {
 margin: 0;
-font-size: 3em;
-padding: 0 2.8em;
+font-size: 3vw;
+padding: 0 6.8vw;
 
 }
 

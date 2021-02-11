@@ -17,9 +17,9 @@
     <h2><span>films</span></h2>
     <div v-for="edge in $page.allContentfulKinhouseFilmy.edges" :key="edge.node.id">
       <h3 style="padding: 10vh 0 0 0;">{{edge.node.filmTitle}}</h3>
-      <p>{{edge.node.filmDirector}}</p>
+      <p class="directed">{{edge.node.filmDirector}}</p>
 
-      <g-link :to="edge.node.path"><g-image :src="edge.node.filmPhoto.file.url" style="width: 60%;  object-fit: fill;" :alt=" edge.node.filmPhoto.title"/></g-link>
+      <g-link :to="edge.node.path"><g-image :src="edge.node.filmPhoto.file.url" style="width: 100%;  object-fit: fill;" :alt=" edge.node.filmPhoto.title"/></g-link>
 <hr>
     </div>
 
@@ -29,7 +29,7 @@
     <h2><span>get in touch</span></h2>
 <div class="more_info">
         <div class="more_info_wrapper">
-            <div class="more_info_tex">
+            <div class="more_info_tex" style="margin: 0 0 10vw 0;">
                 <p>We have gained experience in a variety of different companies
                     and projects in the advertising, broadcast, film and entertainment
                     industries. In 2017 we decided to join forces and start the
@@ -42,21 +42,17 @@
 
     </div>
 
-    <div v-for="edge in $page.allContentfulKinhouseOsoby.edges" :key="edge.node.id" style="display: grid;
-  grid-template-columns: repeat(4, 10vw);
-  grid-template-rows: repeat(5,10vh);
-  grid-gap: 10px;
-  align-content: space-around;
-  justify-content: space-between;
-  margin: 0 0 100px 0;">
+    <div v-for="edge in $page.allContentfulKinhouseOsoby.edges" :key="edge.node.id" style="" class="osoba">
 
-      <g-link :to="edge.node.path"><g-image :src="edge.node.photo.file.url" style="  object-fit: fill; grid-column: 1/5; grid-row: 1/6;" :alt=" edge.node.photo.title"/></g-link>
-      <h3 style="grid-column: 2/5; grid-row: 1/6; " >{{edge.node.polname}}</h3>
-      <p style="grid-column: 2/5; grid-row: 2/6;">{{edge.node.role}}</p>
-      <p style="grid-column: 2/5; grid-row: 3/6;">{{edge.node.mail}}</p>
-      <p style="grid-column: 2/5; grid-row: 4/6;">{{edge.node.phone}}</p>
+      <g-link :to="edge.node.path"><g-image :src="edge.node.photo.file.url" class="selfie"  :alt=" edge.node.photo.title"/></g-link>
+      <div class="opis">
+      <h3 style="" >{{edge.node.polname}}</h3>
+      <p style="">{{edge.node.role}}</p>
+      <p style="">{{edge.node.mail}}</p>
+      <p style="">{{edge.node.phone}}</p>
+      </div>
 
-      <p class="description" style="grid-column: 3/5; grid-row: 3/6;">{{edge.node.description}}</p>
+      <p class="description" style="">{{edge.node.description}}</p>
 
     </div>
 
@@ -122,7 +118,7 @@ export default {
 </script>
 <style>
 .margin-top {
-  padding-top: 16vh;
+  padding-top: 26vh;
 
 }
 h2 {
@@ -132,17 +128,81 @@ h2 {
 }
 h2 span {
   background-color: #fff;
-  font-size: 6em;
-  padding-bottom:  30px;
+  font-size: 6vw;
+  padding-bottom:  3vw;
 }
-h3 {
-  font-size: 3em;
+
+
+
+
+p.directed {
+  margin-top: -1vw;
 }
-.more_info_tex p, .intro_tex p {
-  font-size: 2.8em;
-  text-align: center;
+
+@media (orientation: portrait) {
+  .selfie {
+    object-fit: fill;
+    width: 100%;
+  }
+  p.description {
+    font-size: 3.2vw;
+    padding: 0;
+  }
+  .osoba {
+    margin: 20vw 0;
+  }
+  p {
+    font-size: 3.2vw;
+  }
+  h3 {
+    font-size: 8vw;
+    margin: 0;
+    border:0;
+  }
+  .more_info_tex p, .intro_tex p {
+    font-size: 6.2vw;
+    text-align: center;
+    line-height: 5.8vw;
+  }
 }
-p {
-  font-size: 1.4em;
+@media (orientation: landscape) {
+  .selfie {
+    object-fit: fill;
+    width: 30vw;
+    margin: 0;
+    padding: 0;
+
+
+  }
+  .opis {
+    width: 75vw;
+    margin: 0;
+    padding: 0;
+    padding: 3vw;
+
+  }
+  .osoba {
+    display: flex;
+    flex-direction: row;
+    margin: 10vw 0;
+  }
+  p.description {
+    font-size: 1.2vw;
+    padding: 3vw;
+  }
+  p {
+    font-size: 1.8vw;
+  }
+  h3 {
+    font-size: 4vw;
+    margin: 0;
+    border:0;
+  }
+  .more_info_tex p, .intro_tex p {
+    font-size: 3.2vw;
+    text-align: center;
+    line-height: 3.8vw;
+  }
 }
+
 </style>
