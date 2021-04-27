@@ -62,10 +62,11 @@
 
 <page-query>
   {
-    allContentfulKinhouseFilmy {
+    allContentfulKinhouseFilmy (sortBy:  "updatedAt") {
       edges {
         node {
           filmTitle
+          updatedAt
           filmDirector
           filmRitch
           id
