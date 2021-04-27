@@ -67,6 +67,7 @@
         node {
           filmTitle
           filmDirector
+          filmRitch
           id
           path
           filmPhoto {
