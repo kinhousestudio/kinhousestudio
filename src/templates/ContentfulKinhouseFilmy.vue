@@ -56,6 +56,9 @@
       <p>{{cast.description}}</p>
     </div>
     <hr>
+    <div v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmCastListEn)"></div>
+    <div v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmCastListPl)"></div>
+    <hr>
     <div v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeopleEn)"></div>
     <div v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeoplePl)"></div>
     <hr>
@@ -187,6 +190,8 @@ export default {
         url
       }
     }
+    filmCastListEn
+    filmCastListPl
 
 
 
