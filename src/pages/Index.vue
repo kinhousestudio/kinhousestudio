@@ -67,8 +67,6 @@
         node {
           filmTitle
           updatedAt
-          filmDirector
-          filmRitch
           id
           path
           filmPhoto {
@@ -119,92 +117,5 @@ export default {
 }
 </script>
 <style>
-.margin-top {
-  padding-top: 26vh;
-
-}
-h2 {
-
-  width: 80vw;
-  border-bottom: 3px solid black;
-}
-h2 span {
-  background-color: #fff;
-  font-size: 6vw;
-  padding-bottom:  3vw;
-}
-
-
-
-
-p.directed {
-  margin-top: -1vw;
-}
-
-@media (orientation: portrait) {
-  .selfie {
-    object-fit: fill;
-    width: 100%;
-  }
-  p.description {
-    font-size: 3.2vw;
-    padding: 0;
-  }
-  .osoba {
-    margin: 20vw 0;
-  }
-  p {
-    font-size: 3.2vw;
-  }
-  h3 {
-    font-size: 8vw;
-    margin: 0;
-    border:0;
-  }
-  .more_info_tex p, .intro_tex p {
-    font-size: 6.2vw;
-    text-align: center;
-    line-height: 5.8vw;
-  }
-}
-@media (orientation: landscape) {
-  .selfie {
-    object-fit: fill;
-    width: 30vw;
-    margin: 0;
-    padding: 0;
-
-
-  }
-  .opis {
-    width: 75vw;
-    margin: 0;
-    padding: 0;
-    padding: 3vw;
-
-  }
-  .osoba {
-    display: flex;
-    flex-direction: row;
-    margin: 10vw 0;
-  }
-  p.description {
-    font-size: 1.2vw;
-    padding: 3vw;
-  }
-  p {
-    font-size: 1.8vw;
-  }
-  h3 {
-    font-size: 4vw;
-    margin: 0;
-    border:0;
-  }
-  .more_info_tex p, .intro_tex p {
-    font-size: 3.2vw;
-    text-align: center;
-    line-height: 3.8vw;
-  }
-}
 
 </style>

@@ -16,11 +16,26 @@ module.exports = {
     environment: 'master',
     typeName: 'Contentful'
   }
+},
+{
+  use: '@gridsome/source-filesystem',
+  options: {
+    path: 'blog/**/*.md',
+    typeName: 'Post',
+    remark: {
+      // remark options
+    }
+  }
 }
 
   ],
+  transformers: {
+    remark: {
+      // global remark options
+    }
+  },
   templates: {
-    ContentfulKinhouseOsoby: '/:title',
-    ContentfulKinhouseFilmy: '/film/:title'
+    ContentfulKinhouseFilmy: '/film/:filmTitle',
+    ContentfulKinhouseOsoby: '/:title'
   }
 }

@@ -47,9 +47,13 @@ export default {
   src: url('../assets/fonts/Archia-Bold.otf');
   font-weight: normal;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
 
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+
   margin:0;
   padding:0;
   line-height: 1.2;
@@ -58,6 +62,7 @@ body {
 a {
   color: #000;
   text-decoration: none;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 .active {
 text-decoration: none;
@@ -65,6 +70,7 @@ text-decoration: none;
 
 
 .layout {
+  padding-top: 15vh;
   width:80vw;
   margin: 0 auto;
 
@@ -74,7 +80,7 @@ text-decoration: none;
 
 .nav__link {
 margin: 0;
-font-size: 3vw;
+font-size: 2em;
 padding: 0 6.8vw;
 
 }
