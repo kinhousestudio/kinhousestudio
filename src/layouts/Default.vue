@@ -7,7 +7,7 @@
 
         <g-link exact class="nav__link"  to="/">kinhouse</g-link>
         <g-link       class="nav__link" to="/#filmy">films</g-link>
-        <g-link       class="nav__link" to="/#osoby">get in touch</g-link>
+        <g-link       class="nav__link" to="/#osoby">get_in_touch</g-link>
 
 
       </nav>
@@ -52,6 +52,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+
 body {
 
   margin:0;
@@ -71,25 +73,21 @@ text-decoration: none;
 
 .layout {
   padding-top: 15vh;
-  width:80vw;
+  width:90vw;
   margin: 0 auto;
 
 }
 
-
-
+@media  (orientation: landscape) {
 .nav__link {
 margin: 0;
 font-size: 2em;
 padding: 0 6.8vw;
-
 }
-
 .nav li {
   display: flex;
 flex-direction: row;     /* make main axis horizontal (default setting) */
-justify-content: center; /* center items horizontally, in this case */
-align-items: center;
+align-content: space-around;
 }
 .nav {
   position: fixed;
@@ -98,10 +96,30 @@ align-items: center;
   padding-bottom: 2vh;
   padding-top: 2vh;
   background-color: #fff;
-  width: 80vw!important;
-
-
-
+  width: 90vw!important;
+}
 
 }
+@media  (orientation: portrait) {
+  .nav__link {
+  margin: 0;
+  font-size: 2vh;
+  padding: 0 6.8vw;
+  }
+  .nav li {
+    display: flex;
+  flex-direction: row;     /* make main axis horizontal (default setting) */
+  align-content: space-around;
+  }
+  .nav {
+    position: fixed;
+    top: 0;
+    border-bottom: 3px solid black;
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+    background-color: #fff;
+    width: 90vw!important;
+  }
+}
+
 </style>
