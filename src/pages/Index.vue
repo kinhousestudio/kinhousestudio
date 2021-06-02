@@ -1,21 +1,46 @@
 <template>
   <Layout>
+    <header class="header">
+      <nav class="nav">
+
+
+
+        <g-link exact @click="" class="nav__link"  to="/">kinhouse</g-link>
+        <g-link  v-show="!lang2"      @click="" class="nav__link" to="/#filmy" >films</g-link>
+        <g-link  v-show="lang2"      @click="" class="nav__link" to="/#filmy" >filmy</g-link>
+        <g-link  v-show="!lang2"      @click="" class="nav__link" to="/#osoby">get_in_touch</g-link>
+        <g-link  v-show="lang2"      @click="" class="nav__link" to="/#osoby">kontakt</g-link>
+  
+
+
+
+
+
+
+
+
+
+      </nav>
+    </header>
     <div class="intro_text">
-                <p>We are an independent and collaborative film production company
-                    set up by two siblings, producer Marta Szarzyńska and animator
-                    &amp; designer Paweł Szarzyński. We focus mainly on short and
-                    feature films, creative documentaries and 3D/2D animations!</p>
+
+
+      <div  v-for="edge in $page.allContentfulText.edges" :key="edge.node.id">
+        <p v-show="lang2" >{{edge.node.aboutTextPl}}</p>
+        <p v-show="!lang2" >{{edge.node.aboutTextEn}}</p>
+      </div>
 
     </div>
 
     <div id="filmy" class="margin-top">
     </div>
 
-    <h2><span>films</span></h2>
+    <h2 v-show="!lang2" ><span>films</span></h2>
+    <h2 v-show="lang2" ><span>filmy</span></h2>
     <div class="spis_filmow">
-    <div class="jeden_film"v-for="edge in $page.allContentfulKinhouseFilmy.edges" :key="edge.node.id">
+    <div class="jeden_film" v-for="edge in $page.allContentfulKinhouseFilmy.edges" :key="edge.node.id">
       <div class="opis_filmu">
-      <g-link :to="edge.node.path"><h3>{{edge.node.filmTitle}}</h3></g-link>
+      <g-link :to="edge.node.path" ><h3>{{edge.node.filmTitle}}</h3></g-link>
       <p class="directed">{{edge.node.filmDirectedBy}}</p>
     </div>
     <div class="foto_filmu">
@@ -27,22 +52,23 @@
 
 <div id="osoby" class="margin-top">
 </div>
-    <h2><span>get in touch</span></h2>
+    <h2 v-show="!lang2" ><span>get in touch</span></h2>
+    <h2 v-show="lang2" ><span>kontakt</span></h2>
 <div class="about_text">
 
-                <p>We have gained experience in a variety of different companies
-                    and projects in the advertising, broadcast, film and entertainment
-                    industries. In 2017 we decided to join forces and start the
-                    kinhouse studio. We adjust our team according to the needs of
-                    particular projects, and we engage people from outside of our team.
-                </p>
+
+                <div  v-for="edge in $page.allContentfulText.edges" :key="edge.node.id">
+                  <p v-show="lang2" >{{edge.node.getTextPl}}</p>
+                  <p v-show="!lang2" >{{edge.node.getTextEn}}</p>
+                </div>
 
 
     </div>
 
     <div v-for="edge in $page.allContentfulKinhouseOsoby.edges" :key="edge.node.id" style="" class="osoba">
       <div class="osoba_foto">
-        <g-link :to="edge.node.path"><g-image :src="edge.node.photo.file.url" class="selfie"  :alt=" edge.node.photo.title"/></g-link>
+        <!-- <g-link :to="edge.node.path"><g-image :src="edge.node.photo.file.url" class="selfie"  :alt=" edge.node.photo.title"/></g-link> -->
+        <g-image :src="edge.node.photo.file.url" class="selfie"  :alt=" edge.node.photo.title"/>
       </div>
       <div class="kto_osoba">
         <div class="osoba_dane">
@@ -53,7 +79,8 @@
       <p style="">{{edge.node.phone}}</p>
     </div>
 
-      <p class="opis_osoba" style="">{{edge.node.description}}</p>
+      <p v-show="!lang2" class="opis_osoba" style="">{{edge.node.description}}</p>
+      <p v-show="lang2" class="opis_osoba" style="">{{edge.node.descriptionPl}}</p>
 
     </div>
     </div>
@@ -83,7 +110,7 @@
       }
     }
 
-    allContentfulKinhouseOsoby {
+    allContentfulKinhouseOsoby (sortBy:  "updatedAt") {
       edges {
         node {
         	title
@@ -95,6 +122,7 @@
           mail
           phone
           description
+          descriptionPl
           photo {
             id
             title
@@ -106,6 +134,21 @@
       }
     }
 
+    allContentfulText {
+      edges {
+        node {
+          title
+          id
+    aboutTextPl
+    aboutTextEn
+    getTextPl
+    getTextEn
+
+
+        }
+      }
+    }
+
 
   }
 
@@ -113,16 +156,54 @@
 
 
 <script>
+import { TimelineLite, TweenMax, gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+
+
 export default {
   metaInfo: {
     title: 'kinhouse'
+  },
+  mounted() {
+    const tl = new TimelineLite();
+    const userLang = navigator.language || navigator.userLanguage;
+    userLang == 'pl' ? this.languare = 'polski' : this.languare = 'angielski';
+    userLang == 'pl' ? this.lang2 = true : this.lang2 = false;
+
+
+    gsap.from('.layout', 2, { opacity: 0, delay: 0});
+    // tl.from('.intro_text', 3, { opacity: 0, delay: 2});
+
+    // const RUCHY = document.querySelectorAll('.ruch');
+    //   RUCHY.forEach((ruch) => {
+    //           let wbok = Math.floor((Math.random() * 10) + 1) + 'vw'
+    //           gsap.to(ruch, 1, { x: wbok });
+    // });
+
+
+  },
+  methods: {
+    scrollToOsoby() {
+      gsap.to(window, {duration: 2, scrollTo:"#osoby"});
+    },
+    changeLang2() {
+       this.lang2 == true ? this.lang2 = false : this.lang2 = true;
+    }
+
+  },
+  data() {
+    return {
+      klikacz: 'niekliknięty',
+      lang2: true
+    }
   }
 }
 </script>
 <style>
 h2 {
   font-size: 14vh;
-  border-bottom: 2px solid #000;
+  border-bottom: 3px solid #000;
+
 }
 h2 span {
   background-color: #fff;
@@ -130,10 +211,6 @@ h2 span {
   top: 5vh;
 }
 
-.opis_filmu h3 {
-  font-size: 6vh;
-  text-align: center;
-}
 .opis_filmu p {
   font-size: 2vh;
   text-align: center;
@@ -159,11 +236,15 @@ flex: 1 1 20%;
 
 }
 .kto_osoba {
-  padding: 5vh;
+  padding: 1vh;
   flex: 1 1 30%;
 }
+.osoba_dane {
+  font-size: 1.4em;
+}
 .opis_osoba {
-margin-top: 10vh;
+margin-top: 5vh;
+font-size: 1.2em;
 }
 .osoba h3 {
   font-size: 5vh;
@@ -181,6 +262,10 @@ margin-top: 10vh;
   .opis_filmu {
     flex: 1 1 40%;
     height:  45vh;
+  }
+  .opis_filmu h3 {
+    font-size: 6vh;
+    text-align: center;
   }
   .foto_filmu {
     flex: 1 1 60%;
@@ -221,13 +306,67 @@ margin-top: 10vh;
 
     height:  20vh;
   }
+  .opis_filmu h3 {
+    font-size: 4vh;
+    text-align: center;
+  }
   .intro_text, .about_text {
       font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
       font-size: 4vh;
+
       height: auto;
       width: 80vw;
       padding: 10vh 5vw;;
       text-align: center;
+  }
+}
+
+@media  (orientation: landscape) {
+
+
+.nav {
+  position: fixed;
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+  top: 0;
+  border-bottom: 3px solid black;
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+  background-color: #fff;
+  width: 90vw!important;
+  z-index: 100;
+}
+.nav li {
+  flex-direction: row-reverse;
+  font-size: 2vh;
+}
+.nav h3 {
+  font-size: 2.7vh;
+}
+
+}
+@media  (orientation: portrait) {
+  .nav__link {
+  margin: 0;
+  font-size: 2vh;
+  padding: 0 6.8vw;
+  }
+  .nav li {
+    display: flex;
+  flex-direction: row;     /* make main axis horizontal (default setting) */
+  align-content: space-around;
+  }
+  .nav {
+    position: fixed;
+    top: 0;
+    border-bottom: 3px solid black;
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+    background-color: #fff;
+    width: 90vw!important;
+    z-index: 100;
   }
 }
 

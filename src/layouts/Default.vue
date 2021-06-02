@@ -1,17 +1,6 @@
 <template>
   <div class="layout">
-    <header class="header">
-      <nav class="nav">
 
-
-
-        <g-link exact class="nav__link"  to="/">kinhouse</g-link>
-        <g-link       class="nav__link" to="/#filmy">films</g-link>
-        <g-link       class="nav__link" to="/#osoby">get_in_touch</g-link>
-
-
-      </nav>
-    </header>
     <slot/>
 
     <Footer />
@@ -47,18 +36,28 @@ export default {
   src: url('../assets/fonts/Archia-Bold.otf');
   font-weight: normal;
 }
+@font-face {
+  font-family: Archia-Regular;
+  src: url('../assets/fonts/Archia-Regular.otf');
+  font-weight: normal;
+}
 h1, h2, h3, h4, h5, h6 {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+.title span {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Regular",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size: smaller;
 
+}
 
 
 body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Regular",Roboto,"Helvetica Neue",Arial,sans-serif;
 
   margin:0;
   padding:0;
-  line-height: 1.2;
+  
   width: 99vw;
 }
 a {
@@ -97,6 +96,7 @@ align-content: space-around;
   padding-top: 2vh;
   background-color: #fff;
   width: 90vw!important;
+  z-index: 100;
 }
 
 }
@@ -119,6 +119,7 @@ align-content: space-around;
     padding-top: 2vh;
     background-color: #fff;
     width: 90vw!important;
+    z-index: 100;
   }
 }
 
