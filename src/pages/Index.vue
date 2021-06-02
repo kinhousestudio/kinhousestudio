@@ -10,7 +10,7 @@
         <g-link  v-show="lang2"      @click="" class="nav__link" to="/#filmy" >filmy</g-link>
         <g-link  v-show="!lang2"      @click="" class="nav__link" to="/#osoby">get_in_touch</g-link>
         <g-link  v-show="lang2"      @click="" class="nav__link" to="/#osoby">kontakt</g-link>
-  
+
 
 
 
@@ -39,13 +39,14 @@
     <h2 v-show="lang2" ><span>filmy</span></h2>
     <div class="spis_filmow">
     <div class="jeden_film" v-for="edge in $page.allContentfulKinhouseFilmy.edges" :key="edge.node.id">
+      <div class="foto_filmu">
+        <g-link :to="edge.node.path"><g-image :src="edge.node.filmPhoto.file.url" :alt=" edge.node.filmPhoto.title"/></g-link>
+      </div>
       <div class="opis_filmu">
       <g-link :to="edge.node.path" ><h3>{{edge.node.filmTitle}}</h3></g-link>
       <p class="directed">{{edge.node.filmDirectedBy}}</p>
     </div>
-    <div class="foto_filmu">
-      <g-link :to="edge.node.path"><g-image :src="edge.node.filmPhoto.file.url" :alt=" edge.node.filmPhoto.title"/></g-link>
-    </div>
+
 
     </div>
     </div><!-- koniec spis filmow -->
@@ -234,13 +235,15 @@ h2 span {
 .osoba_foto {
 flex: 1 1 20%;
 
+
 }
 .kto_osoba {
   padding: 1vh;
   flex: 1 1 30%;
 }
 .osoba_dane {
-  font-size: 1.4em;
+  font-size: 1.2em;
+
 }
 .opis_osoba {
 margin-top: 5vh;
@@ -300,23 +303,26 @@ font-size: 1.2em;
     margin: 20vh 0;
   }
   .foto_filmu {
-    height: 30vh;
+    height: 50vh;
+    width: 100vw;
+    margin: 0 0 0 -5vw;
   }
   .opis_filmu {
 
     height:  20vh;
   }
   .opis_filmu h3 {
-    font-size: 4vh;
+    font-size: 3.4vh;
     text-align: center;
+    margin-bottom: 5vh;
   }
   .intro_text, .about_text {
       font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
-      font-size: 4vh;
+      font-size: 3.4vh;
 
       height: auto;
       width: 80vw;
-      padding: 10vh 5vw;;
+      padding: 0 5vw 10vh 5vw;
       text-align: center;
   }
 }

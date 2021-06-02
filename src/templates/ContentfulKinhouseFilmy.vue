@@ -261,10 +261,7 @@ ul li {
 
 }
 
-.coproduction {
-  display: flex;
-  justify-content: flex-start;
-}
+
 .persona {
   display: flex;
   flex-wrap: wrap;
@@ -277,23 +274,6 @@ ul li {
   flex-direction: row;
 
 }
-
-
-
-.titleBig {
-  width: 90vw;
-  height: 60vh;
-  margin-left: -10vw;
-
-}
-.titleBig h2 {
-  font-size: 8vw;
-  color: #fff;
-}
-.titleBig h3 {
-  font-size: 2.5vw;
-  color: #fff;
-}
 .kinhouse a {
   color: #fff;
   position:fixed;
@@ -305,6 +285,10 @@ ul li {
 
   padding: 3vh 3vw;
 }
+
+
+
+
 
 @media  (orientation: landscape) {
   article {
@@ -336,20 +320,43 @@ ul li {
     padding: 0 10vh;
     line-height: 1.5em;
   }
+  .titleBig {
+    width: 90vw;
+    height: 60vh;
+    margin-left: -10vw;
+
+  }
+  .titleBig h2 {
+    font-size: 8vw;
+    color: #fff;
+  }
+  .titleBig h3 {
+    font-size: 2.5vw;
+    color: #fff;
+  }
+  .coproduction {
+    display: flex;
+    justify-content: flex-start;
+  }
 }
+
 @media  (orientation: portrait) {
   article {
-    padding: 0 15vw;
-    position: relative;
-    bottom: 30vh;
+    padding: 0 3vw;;
+
   }
   .details_production {
     display: flex;
     flex-wrap: wrap;
+    margin: 0;
+    padding: 0 0 0 -3vw;;
+    width: 94vw;
 
   }
   .details, .production {
     flex: 1 1 100%;
+    margin: 0;
+    padding: 0;
 
 
   }
@@ -365,6 +372,30 @@ ul li {
   .persona_opis {
     flex: 1 1 100%;
     padding: 1vh;
+  }
+  .titleBig {
+    width: 90vw;
+    height: 30vh;
+
+
+  }
+  .titleBig h2 {
+    font-size: 3.4vh;
+    color: #000;
+  }
+  .titleBig h3 {
+    font-size: 2.5vh;
+    color: #000;
+  }
+  .coproduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .kinhouse a {
+
+    font-size: 2em;
+
   }
 }
 
