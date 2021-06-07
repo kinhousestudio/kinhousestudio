@@ -31,7 +31,7 @@ export default {
 
 
 <style>
-@font-face {
+/* @font-face {
   font-family: Archia-Bold;
   src: url('../assets/fonts/Archia-Bold.otf');
   font-weight: normal;
@@ -40,30 +40,50 @@ export default {
   font-family: Archia-Regular;
   src: url('../assets/fonts/Archia-Regular.otf');
   font-weight: normal;
+} */
+@font-face {
+    font-family: 'Archia-Bold';
+    src: url('../assets/fonts/ArchiaBold.woff2') format('woff2'),
+        url('../assets/fonts/ArchiaBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
+
+@font-face {
+    font-family: 'Archia-Regular';
+    src: url('../assets/fonts/ArchiaRegular.woff2') format('woff2'),
+        url('../assets/fonts/ArchiaRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family: "Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
 .title span {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Regular",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: "Archia-Regular",Roboto,"Helvetica Neue",Arial,sans-serif;
   font-size: smaller;
 
 }
 
 
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Regular",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: "Archia-Regular",Roboto,"Helvetica Neue",Arial,sans-serif;
 
   margin:0;
   padding:0;
-  
+
   width: 99vw;
 }
 a {
   color: #000;
   text-decoration: none;
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: "Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 .active {
 text-decoration: none;

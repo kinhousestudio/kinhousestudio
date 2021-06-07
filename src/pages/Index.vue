@@ -285,7 +285,7 @@ font-size: 1.2em;
     margin-right: 10vh;
   }
   .intro_text, .about_text {
-      font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+      font-family: "Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
       font-size: 5vh;
       height: auto;
       width: 80vw;
@@ -317,7 +317,7 @@ font-size: 1.2em;
     margin-bottom: 5vh;
   }
   .intro_text, .about_text {
-      font-family: -apple-system,system-ui,BlinkMacSystemFont,"Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+      font-family: "Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
       font-size: 3.4vh;
 
       height: auto;
