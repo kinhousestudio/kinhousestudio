@@ -55,9 +55,9 @@
 
 
     <div class="nagrody">
-        <div v-for="fest in $page.contentfulKinhouseFilmy.filmFestivalAll" :key="fest.id">
+        <div v-for="fest in $page.contentfulKinhouseFilmy.filmFestivalAll" :key="fest.id" class="nagroda">
           <g-image :src="fest.file.url"
-          style="width: 11vw; padding: 1%;  object-fit: cover; " :alt=" fest.title"/>
+          style=" object-fit: cover; " :alt=" fest.title"/>
         </div>
     </div>
 
@@ -353,6 +353,10 @@ ul li {
   margin: 0 0 200px 0;
   justify-content: center;
 }
+.nagroda img {
+  width: 11vw;
+  padding: 1%;
+}
 
   .details_production {
     display: flex;
@@ -419,6 +423,10 @@ ul li {
     margin: 0 0 0 -22%;
     padding: 0;
   }
+  .player iframe {
+    width: 99%;
+    overflow: hidden;
+  }
 
 
 
@@ -476,6 +484,10 @@ ul li {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: center;
+  }
+  .production {
+    text-align: center;
   }
   .kinhouse a {
 
@@ -488,6 +500,13 @@ ul li {
     height: 100%;
     padding: 0;
     object-fit: cover;
+  }
+  .nagroda img {
+    width: 60vw;
+    padding: 1%;
+  }
+  .nagrody {
+    text-align: center;
   }
 
 
