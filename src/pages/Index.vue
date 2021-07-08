@@ -26,8 +26,8 @@
 
 
       <div  v-for="edge in $page.allContentfulText.edges" :key="edge.node.id">
-        <p v-show="lang2" >{{edge.node.aboutTextPl}}</p>
         <p v-show="!lang2" >{{edge.node.aboutTextEn}}</p>
+        <p v-show="lang2" >{{edge.node.aboutTextPl}}</p>
       </div>
 
     </div>
@@ -43,7 +43,8 @@
         <g-link :to="edge.node.path"><g-image :src="edge.node.filmPhoto.file.url" :alt=" edge.node.filmPhoto.title"/></g-link>
       </div>
       <div class="opis_filmu">
-      <g-link :to="edge.node.path" ><h3>{{edge.node.filmTitle}}</h3></g-link>
+      <g-link :to="edge.node.path" v-show="!lang2" ><h3>{{edge.node.filmTitle}}</h3></g-link>
+      <g-link :to="edge.node.path" v-show="lang2" ><h3>{{edge.node.filmTytul}}</h3></g-link>
       <p class="directed">{{edge.node.filmDirectedBy}}</p>
     </div>
 
@@ -71,18 +72,23 @@
         <!-- <g-link :to="edge.node.path"><g-image :src="edge.node.photo.file.url" class="selfie"  :alt=" edge.node.photo.title"/></g-link> -->
         <g-image :src="edge.node.photo.file.url" class="selfie"  :alt=" edge.node.photo.title"/>
       </div>
-      <div class="kto_osoba">
+
+      <div class="osoba_pisane">
+
+
         <div class="osoba_dane">
 
       <h3 style="" >{{edge.node.polname}}</h3>
       <p style="">{{edge.node.role}}</p>
       <p style="">{{edge.node.mail}}</p>
       <p style="">{{edge.node.phone}}</p>
+      </div>
+
+      <div class="osoba_opis">
+      <p v-show="!lang2"  style="">{{edge.node.description}}</p>
+      <p v-show="lang2"  style="">{{edge.node.descriptionPl}}</p>
+
     </div>
-
-      <p v-show="!lang2" class="opis_osoba" style="">{{edge.node.description}}</p>
-      <p v-show="lang2" class="opis_osoba" style="">{{edge.node.descriptionPl}}</p>
-
     </div>
     </div>
 
@@ -96,6 +102,7 @@
       edges {
         node {
           filmTitle
+          filmTytul
           filmDirectedBy
           updatedAt
           id
@@ -203,7 +210,7 @@ export default {
 <style>
 h2 {
   font-size: 14vh;
-  border-bottom: 3px solid #000;
+  border-bottom: 1px solid #000;
 
 }
 h2 span {
@@ -228,29 +235,39 @@ h2 span {
   display: flex;
   flex-wrap: wrap;
   align-items:  flex-start;
+  margin: 200px 0;
+  min-height: 500px;
 
-  margin: 20vh 0;
+
 
 }
 .osoba_foto {
-flex: 1 1 20%;
-
+flex: 1 1 25%;
+}
+.osoba_pisane {
+  flex: 1 0 60%;
+  display: flex;
+flex-wrap: wrap;
 
 }
-.kto_osoba {
-  padding: 1vh;
-  flex: 1 1 30%;
+.osoba_opis {
+  padding: 0;
+  margin: 0;
+  margin-top: 0;
+  font-size: 1.2em;
+  flex: 1 1 45%;
+
 }
 .osoba_dane {
   font-size: 1.2em;
+  padding: 0 20px;
+  flex: 0 0 33%;
+}
 
-}
-.opis_osoba {
-margin-top: 5vh;
-font-size: 1.2em;
-}
 .osoba h3 {
   font-size: 5vh;
+  margin: 0;
+  padding: 0;
 }
 
 @media  (orientation: landscape) {
@@ -260,38 +277,58 @@ font-size: 1.2em;
   .jeden_film {
     display: flex;
     flex-wrap: wrap;
-    margin: 20vh 0;
+    margin: 200px 0;
   }
   .opis_filmu {
     flex: 1 1 40%;
-    height:  45vh;
+    height:  40vh;
+
+    margin: 0;
+    padding: 0;
+
   }
   .opis_filmu h3 {
     font-size: 6vh;
-    text-align: center;
+    text-align: left;
+    padding: 0 0 0 10px;
+    margin: 0 0 6vh 0;
+  }
+  .opis_filmu p {
+    text-align: left;
+    padding: 0 0 0 10px ;
+  }
+  .opis_filmu a {
+    margin-top: 0;
+    padding-top: 0;
+
   }
   .foto_filmu {
-    flex: 1 1 60%;
-    height:  45vh;
+    flex: 1 1 50%;
+    height:  40vh;
   }
   .jeden_film:nth-child(even) {
     flex-direction: row-reverse;
-    border-right: 2px solid #000;
+    border-left: 1px solid black;
     margin-left: 10vh;
+    margin-right: 10vw;
   }
   .jeden_film:nth-child(odd) {
     flex-direction: row;
-    border-left: 2px solid #000;
+    border-right: 1px solid black;
     margin-right: 10vh;
+    margin-left: 10vw;
   }
   .intro_text, .about_text {
       font-family: "Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
       font-size: 5vh;
       height: auto;
       width: 80vw;
-      padding: 10vh 5vw;;
+      padding: 0;
+      margin: 100px 5vw -12vh 5vw;
       text-align: center;
   }
+  .intro_text {    margin: 100px 5vw -12vh 5vw; }
+  .about_text {    margin: 200px 5vw 200px 5vw; }
 }
 @media  (orientation: portrait) {
   .selfie {
@@ -337,7 +374,7 @@ font-size: 1.2em;
     justify-content: space-around;
     align-items: center;
   top: 0;
-  border-bottom: 3px solid black;
+  border-bottom: 1px solid black;
   padding-bottom: 2vh;
   padding-top: 2vh;
   background-color: #fff;
@@ -367,7 +404,7 @@ font-size: 1.2em;
   .nav {
     position: fixed;
     top: 0;
-    border-bottom: 3px solid black;
+    border-bottom: 1px solid black;
     padding-bottom: 2vh;
     padding-top: 2vh;
     background-color: #fff;

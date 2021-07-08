@@ -1,7 +1,7 @@
 <template id="">
   <footer>
     <hr>
-    <p>kinhouse studio 2021</p>
+    <p>kinhouse</p>
   </footer>
 </template>
 
@@ -13,7 +13,8 @@ export default {
 </script>
 <style>
 footer {
-
+text-align: center;
+font-size: 4vh;
 }
 
 </style>
