@@ -31,16 +31,6 @@ export default {
 
 
 <style>
-/* @font-face {
-  font-family: Archia-Bold;
-  src: url('../assets/fonts/Archia-Bold.otf');
-  font-weight: normal;
-}
-@font-face {
-  font-family: Archia-Regular;
-  src: url('../assets/fonts/Archia-Regular.otf');
-  font-weight: normal;
-} */
 @font-face {
     font-family: 'Archia-Bold';
     src: url('../assets/fonts/ArchiaBold.woff2') format('woff2'),
@@ -58,6 +48,9 @@ export default {
     font-style: normal;
     font-display: swap;
 }
+
+
+
 
 
 

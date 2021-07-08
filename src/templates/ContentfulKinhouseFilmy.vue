@@ -27,13 +27,15 @@
 
     <div class="production">
 
-
+      <h3 v-show="!lang" >Production</h3>
+      <h3 v-show="lang" >Produkcja</h3>
     <g-image :src="$page.contentfulKinhouseFilmy.filmProductionPhoto.file.url"
     style="width: 200px; height: 200px; padding: 0;  object-fit: contain; " :alt=" $page.contentfulKinhouseFilmy.filmProductionPhoto.title"/>
 
 
-    <div class="coproduction">
-
+      <h3 v-show="!lang" >Coproduction</h3>
+      <h3 v-show="lang" >Koprodukcja</h3>
+      <div class="coproduction">
 
     <div v-for="prod in $page.contentfulKinhouseFilmy.filmCoproductionAll" :key="prod.id">
       <g-link :to="prod.description" >
@@ -45,16 +47,48 @@
     </div>
     </div>
 
+
+
+    <h3 v-show="!lang" style=" text-align: center; margin-top: 200px;" >{{$page.contentfulKinhouseFilmy.filmFestivalAllHeader}}</h3>
+    <h3 v-show="lang"  style="  text-align: center; margin-top: 200px;" >{{$page.contentfulKinhouseFilmy.filmFestivalAllHeaderPl}}</h3>
+
+
+
+    <div class="nagrody">
+        <div v-for="fest in $page.contentfulKinhouseFilmy.filmFestivalAll" :key="fest.id">
+          <g-image :src="fest.file.url"
+          style="width: 11vw; padding: 1%;  object-fit: cover; " :alt=" fest.title"/>
+        </div>
+    </div>
+
+    <div class="player">
+
+    <iframe :src="$page.contentfulKinhouseFilmy.filmVideoLink"
+
+    width="1024" height="760" frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+  </div>
+
+
+
+
+
     <div class="filmSynopisStatement">
       <div v-show="!lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmSynopisStatementEn)"></div>
       <div v-show="lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmSynopisStatementPl)"></div>
     </div>
 
-    <p v-show="!lang" >{{$page.contentfulKinhouseFilmy.filmSynopisEn}}</p>
-    <p v-show="lang" >{{$page.contentfulKinhouseFilmy.filmSynopisPl}}</p>
 
-    <p v-show="!lang" >{{$page.contentfulKinhouseFilmy.filmStatementEn}}</p>
-    <p v-show="lang" >{{$page.contentfulKinhouseFilmy.filmStatementPl}}</p>
+
+
+    <div v-for="foto in $page.contentfulKinhouseFilmy.filmGalleryAll" :key="foto.id" class="foto">
+      <g-image :src="foto.file.url"
+      :alt=" foto.title"/>
+    </div>
+
+
+
 
     <div v-show="!lang" v-for="crew in $page.contentfulKinhouseFilmy.filmCrewAll" :key="crew.id" class="persona">
       <g-image :src="crew.file.url"
@@ -64,6 +98,11 @@
       <p>{{crew.description}}</p>
     </div>
     </div>
+
+
+
+
+
     <div  v-show="lang" v-for="crew in $page.contentfulKinhouseFilmy.filmCrewAllPl" :key="crew.id" class="persona">
       <g-image :src="crew.file.url"
       style="width: 20%; padding: 1%;  object-fit: cover;" :alt=" crew.title"/>
@@ -89,13 +128,26 @@
       <p>{{cast.description}}</p>
     </div>
     </div>
+
     <hr>
-    <div  v-show="!lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmCastListEn)"></div>
-    <div  v-show="lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmCastListPl)"></div>
+    <div class="castandcrew">
+    <div  class="cast" v-show="!lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmCastListEn)"></div>
+    <div  class="cast" v-show="lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmCastListPl)"></div>
 
-    <div  v-show="!lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeopleEn)"></div>
-    <div  v-show="lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeoplePl)"></div>
+    <div  class="crew" v-show="!lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeopleEn)"></div>
+    <div  class="crew" v-show="lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeoplePl)"></div>
+    </div>    <!-- castandcrew -->
 
+
+
+
+
+
+
+
+
+
+    <hr>
     <p v-show="!lang" >{{$page.contentfulKinhouseFilmy.filmThanks}}</p>
     <p v-show="lang" >{{$page.contentfulKinhouseFilmy.filmThanksPl}}</p>
 
@@ -103,27 +155,6 @@
 
 
 
-
-
-    <hr>
-    <div v-for="foto in $page.contentfulKinhouseFilmy.filmGalleryAll" :key="foto.id">
-      <g-image :src="foto.file.url"
-      style="width: 144%; margin: 0 0 0 -22%; height: 100%; padding: 0;  object-fit: cover;" :alt=" foto.title"/>
-    </div>
-    <!-- <hr>
-    <p>{{$page.contentfulKinhouseFilmy.filmPdf}}</p> -->
-    <hr>
-    <p>{{$page.contentfulKinhouseFilmy.filmVideoLink}}</p>
-
-
-
-
-
-
-    <!-- <div v-for="fest in $page.contentfulKinhouseFilmy.filmFestivalAll" :key="fest.id">
-      <g-image :src="fest.file.url"
-      style="width: 50%; padding: 1%;  object-fit: cover;" :alt=" fest.title"/>
-    </div> -->
 
   </article>
 </Layout2>
@@ -183,6 +214,16 @@ export default {
     filmThanksPl
 
     filmVideoLink
+    filmFestivalAllHeader
+    filmFestivalAllHeaderPl
+
+    filmFestivalAll {
+      id
+      title
+      file {
+        url
+      }
+    }
     filmGalleryAll {
       id
       title
@@ -249,6 +290,10 @@ export default {
   }
 </page-query>
 <style>
+.player {
+  text-align: center;
+  margin: 200px auto;
+}
 h2.title {
   border-bottom: 0;
 }
@@ -296,6 +341,19 @@ ul li {
     position: relative;
     bottom: 70vh;
   }
+  .castandcrew {
+    display: flex;
+  }
+  .cast, .crew {
+    flex: 1 1 45%;
+  }
+.nagrody {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 200px 0;
+  justify-content: center;
+}
+
   .details_production {
     display: flex;
 
@@ -306,8 +364,9 @@ ul li {
 
   }
   .filmSynopisStatement {
-    padding: 15vh 5vw ;
+    padding: 0 5vw ;
     line-height: 2em;
+    margin-bottom: 200px;
   }
   .persona img {
     flex: 1 1 30%;
@@ -337,7 +396,33 @@ ul li {
   .coproduction {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
+  .production  {
+    border-left: 1px solid black;
+    margin-left:  20px;
+    padding-left: 20px;
+  }
+  h3 {
+    font-size: 1.8em;
+  }
+  .foto img {
+    width: 100%;
+
+    height: 100%;
+    padding: 0;
+    object-fit: cover;
+  }
+
+  .foto {
+    width: 144%!important;
+    margin: 0 0 0 -22%;
+    padding: 0;
+  }
+
+
+
+
 }
 
 @media  (orientation: portrait) {
@@ -397,6 +482,19 @@ ul li {
     font-size: 2em;
 
   }
+  .foto img {
+    width: 144%;
+    margin: 0 0 0 -22%;
+    height: 100%;
+    padding: 0;
+    object-fit: cover;
+  }
+
+
+
+
+
+
 }
 
 

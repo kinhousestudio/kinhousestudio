@@ -245,7 +245,7 @@ h2 span {
 flex: 1 1 25%;
 }
 .osoba_pisane {
-  flex: 1 0 60%;
+  flex: 2 0 60%;
   display: flex;
 flex-wrap: wrap;
 
@@ -255,13 +255,13 @@ flex-wrap: wrap;
   margin: 0;
   margin-top: 0;
   font-size: 1.2em;
-  flex: 1 1 45%;
+  flex: 1 0 45%;
 
 }
 .osoba_dane {
   font-size: 1.2em;
   padding: 0 20px;
-  flex: 0 0 33%;
+  flex: 1 0 25%;
 }
 
 .osoba h3 {
