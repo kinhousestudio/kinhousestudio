@@ -5,11 +5,13 @@
 
 
 
-        <g-link exact @click="" class="nav__link"  to="/">kinhouse</g-link>
-        <g-link  v-show="!lang2"      @click="" class="nav__link" to="/#filmy" >films</g-link>
-        <g-link  v-show="lang2"      @click="" class="nav__link" to="/#filmy" >filmy</g-link>
-        <g-link  v-show="!lang2"      @click="" class="nav__link" to="/#osoby">get_in_touch</g-link>
-        <g-link  v-show="lang2"      @click="" class="nav__link" to="/#osoby">kontakt</g-link>
+        <p exact @click="scrollToTop" class="nav__link"  >kinhouse</p>
+        <p  v-show="!lang2"      @click="scrollToFilmy" class="nav__link" >films</p>
+        <p  v-show="lang2"      @click="scrollToFilmy" class="nav__link"  >filmy</p>
+        <p  v-show="!lang2"      @click="scrollToOsoby" class="nav__link" >get_in_touch</p>
+        <p  v-show="lang2"      @click="scrollToOsoby" class="nav__link" >kontakt</p>
+
+    
 
 
 
@@ -166,6 +168,7 @@
 <script>
 import { TimelineLite, TweenMax, gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+gsap.registerPlugin(ScrollToPlugin );
 
 
 export default {
@@ -179,7 +182,7 @@ export default {
     userLang == 'pl' ? this.lang2 = true : this.lang2 = false;
 
 
-    gsap.from('.layout', 2, { opacity: 0, delay: 0});
+    gsap.from(app, 2, { opacity: 0, delay: 0});
     // tl.from('.intro_text', 3, { opacity: 0, delay: 2});
 
     // const RUCHY = document.querySelectorAll('.ruch');
@@ -192,10 +195,16 @@ export default {
   },
   methods: {
     scrollToOsoby() {
-      gsap.to(window, {duration: 2, scrollTo:"#osoby"});
+      gsap.to(window, {duration: 1, scrollTo:"#osoby"});
     },
     changeLang2() {
        this.lang2 == true ? this.lang2 = false : this.lang2 = true;
+    },
+    scrollToFilmy() {
+      gsap.to(window, {duration: 1, scrollTo: "#filmy"});
+    },
+    scrollToTop() {
+      gsap.to(window, {duration: 1, scrollTo: "#header"});
     }
 
   },

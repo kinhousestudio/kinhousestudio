@@ -81,6 +81,9 @@ a {
 .active {
 text-decoration: none;
 }
+.nav__link {
+  font-family: "Archia-Bold",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
 
 
 .layout {

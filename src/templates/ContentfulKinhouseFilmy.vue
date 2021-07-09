@@ -81,7 +81,9 @@
 
 
 
-    <div class="gallery">
+    <button class="galleryButton" @click="wstecz">wstecz</button>
+    <button class="galleryButton" @click="dalej">dalej</button>
+    <div class="gallery" id="gallery">
     <div v-for="foto in $page.contentfulKinhouseFilmy.filmGalleryAll" :key="foto.id" class="foto">
       <g-image :src="foto.file.url"
       :alt=" foto.title"/>
@@ -138,37 +140,33 @@
     <div  class="crew" v-show="!lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeopleEn)"></div>
     <div  class="crew" v-show="lang" v-html="rithtextToHtml($page.contentfulKinhouseFilmy.filmPeoplePl)"></div>
     </div>    <!-- castandcrew -->
-
-
-
-
-
-
-
-
-
-
     <hr>
     <p v-show="!lang" >{{$page.contentfulKinhouseFilmy.filmThanks}}</p>
     <p v-show="lang" >{{$page.contentfulKinhouseFilmy.filmThanksPl}}</p>
-
-
-
-
-
+    <hr>
 
   </article>
+
 </Layout2>
 </template>
 <script>
 import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
 import { TimelineLite, TweenMax, gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+gsap.registerPlugin(ScrollToPlugin );
+
 
 
 export default {
   methods: {
     rithtextToHtml (content) {
       return documentToHtmlString(content)
+    },
+    dalej() {
+      gsap.to(".gallery", {duration: 1, scrollTo: {y: 200} });
+    },
+    wstecz() {
+      gsap.to(".gallery", {duration: 1, scrollTo: {y: 200}});
     }
   },
   data() {
@@ -341,6 +339,8 @@ ul li {
     padding: 0 15vw;
     position: relative;
     bottom: 70vh;
+    margin: 0;
+
   }
   .castandcrew {
     display: flex;
@@ -434,6 +434,9 @@ ul li {
   display: flex;
   margin: 0 0 0 -10vw;
 }
+.galleryButton {
+  display: none;
+}
 
 
 
@@ -516,7 +519,12 @@ ul li {
   .nagrody {
     text-align: center;
   }
-
+ iframe {
+   max-width: 90vw!important;
+ }
+ .galleryButton {
+   display: none;
+ }
 
 
 
