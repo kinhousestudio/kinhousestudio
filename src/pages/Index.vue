@@ -11,7 +11,7 @@
         <p  v-show="!lang2"      @click="scrollToOsoby" class="nav__link" >get_in_touch</p>
         <p  v-show="lang2"      @click="scrollToOsoby" class="nav__link" >kontakt</p>
 
-    
+
 
 
 
@@ -420,6 +420,7 @@ flex-wrap: wrap;
     background-color: #fff;
     width: 90vw!important;
     z-index: 100;
+    display: flex;
   }
 }
 

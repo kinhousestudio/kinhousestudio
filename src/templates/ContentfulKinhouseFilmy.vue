@@ -442,6 +442,7 @@ ul li {
 
 
 
+
 }
 
 @media  (orientation: portrait) {
@@ -525,6 +526,7 @@ ul li {
  .galleryButton {
    display: none;
  }
+
 
 
 
