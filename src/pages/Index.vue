@@ -291,7 +291,8 @@ flex-wrap: wrap;
     font-size: 6vh;
     text-align: left;
     padding: 0 0 0 10px;
-    margin: 0 0 6vh 0;
+    margin: -10px 0 6vh 0;
+
   }
   .opis_filmu p {
     text-align: left;
@@ -309,13 +310,13 @@ flex-wrap: wrap;
   .jeden_film:nth-child(even) {
     flex-direction: row-reverse;
     border-left: 1px solid black;
-    margin-left: 10vh;
+    margin-left: 0vh;
     margin-right: 10vw;
   }
   .jeden_film:nth-child(odd) {
     flex-direction: row;
     border-right: 1px solid black;
-    margin-right: 10vh;
+    margin-right: 0vh;
     margin-left: 10vw;
   }
   .intro_text, .about_text {
