@@ -81,10 +81,11 @@
 
 
 
-
+    <div class="gallery">
     <div v-for="foto in $page.contentfulKinhouseFilmy.filmGalleryAll" :key="foto.id" class="foto">
       <g-image :src="foto.file.url"
       :alt=" foto.title"/>
+    </div>
     </div>
 
 
@@ -411,22 +412,29 @@ ul li {
     font-size: 1.8em;
   }
   .foto img {
-    width: 100%;
+    width: 90vw;;
 
-    height: 100%;
+    height: 90vh;
     padding: 0;
     object-fit: cover;
   }
 
   .foto {
-    width: 144%!important;
-    margin: 0 0 0 -22%;
+    width: 90vw!important;
+    height: 90vh;
+    margin: 0 5px 0 0;
     padding: 0;
   }
-  .player iframe {
-    width: 99%;
-    overflow: hidden;
-  }
+
+
+.gallery {
+  height: 92vh;
+  width: 90vw;
+  overflow-x: scroll;
+  display: flex;
+  margin: 0 0 0 -10vw;
+}
+
 
 
 
