@@ -95,6 +95,11 @@
     </div>
     <button class="galleryButton wstecz" @click="wstecz"><<</button>
     <button class="galleryButton dalej" @click="dalej">>></button>
+    <!-- <p>{{howManyPhotos}}</p>
+    <p>{{howManyNumber}}</p>
+    <p>{{howFar}}</p> -->
+
+
 
 
 
@@ -169,7 +174,7 @@ export default {
       return documentToHtmlString(content)
     },
     dalej() {
-      this.howTransform = this.howTransform - 91;
+      this.howTransform <= this.howFar * -91 ? this.howTransform = this.howFar * -91 : this.howTransform = this.howTransform - 91;
       gsap.to(".galleryPhotos", {duration: 1, translateX: this.howTransform + "vw" });
     },
     wstecz() {
@@ -180,17 +185,24 @@ export default {
   data() {
     return {
       lang:  false,
-      howTransform: 0
+      howTransform: 0,
+      howManyPhotos: [],
+      howManyNumber: 0,
+      howFar: 0
+
     }
   },
   mounted() {
     const tl = new TimelineLite();
     const userLang = navigator.language || navigator.userLanguage;
-
     userLang == 'pl' ? this.lang = true : this.lang = false;
-
-
     gsap.from('#app', 2, { opacity: 0, delay: 0});
+    this.howManyPhotos.push(document.getElementsByClassName("foto"));
+
+    this.howManyNumber = this.howManyPhotos[0].length;
+    this.howFar = this.howManyNumber - 1;
+
+
   }
 }
 </script>
