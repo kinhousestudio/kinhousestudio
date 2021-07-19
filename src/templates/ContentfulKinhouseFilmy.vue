@@ -81,14 +81,20 @@
 
 
 
-    <button class="galleryButton" @click="wstecz">wstecz</button>
-    <button class="galleryButton" @click="dalej">dalej</button>
     <div class="gallery" id="gallery">
+      <!-- <p>{{howTransform}}</p> -->
+
+
+        <div class="galleryPhotos">
+
     <div v-for="foto in $page.contentfulKinhouseFilmy.filmGalleryAll" :key="foto.id" class="foto">
       <g-image :src="foto.file.url"
       :alt=" foto.title"/>
     </div>
+        </div>
     </div>
+    <button class="galleryButton wstecz" @click="wstecz"><<</button>
+    <button class="galleryButton dalej" @click="dalej">>></button>
 
 
 
@@ -163,15 +169,18 @@ export default {
       return documentToHtmlString(content)
     },
     dalej() {
-      gsap.to(".gallery", {duration: 1, scrollTo: {y: 200} });
+      this.howTransform = this.howTransform - 91;
+      gsap.to(".galleryPhotos", {duration: 1, translateX: this.howTransform + "vw" });
     },
     wstecz() {
-      gsap.to(".gallery", {duration: 1, scrollTo: {y: 200}});
+      this.howTransform >= 0 ? this.howTransform = 0 : this.howTransform = this.howTransform + 91;
+      gsap.to(".galleryPhotos", {duration: 1, translateX: this.howTransform + "vw" });
     }
   },
   data() {
     return {
-      lang:  false
+      lang:  false,
+      howTransform: 0
     }
   },
   mounted() {
@@ -422,7 +431,7 @@ ul li {
   .foto {
     width: 90vw!important;
     height: 90vh;
-    margin: 0 5px 0 0;
+    margin: 0 1vw 0 0;
     padding: 0;
   }
 
@@ -432,11 +441,31 @@ ul li {
   width: 90vw;
   overflow-x: scroll;
   display: flex;
+  flex-direction: column;
   margin: 0 0 0 -10vw;
+
+}
+
+.galleryPhotos {
+  display: flex;
 }
 .galleryButton {
-  display: none;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  opacity: 0.2;
+  width: 100px;
+  height: 100px;
+  font-size: 4em;
+  position: relative;
+  top: -15vh; left: -10vw;
+  transition: 0.5s;
+
 }
+.galleryButton:hover {
+  opacity: 0.5;
+}
+
 
 
 
@@ -522,9 +551,11 @@ ul li {
   }
  iframe {
    max-width: 90vw!important;
+
  }
  .galleryButton {
    display: none;
+
  }
 
 
