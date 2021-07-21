@@ -212,6 +212,14 @@ export default {
 }
 </script>
 <style>
+#app {
+  animation: 2s start ;
+}
+@@keyframes start {
+  from { opacity: 0;}
+  to {opacity: 1;}  
+}
+
 h2 {
   font-size: 14vh;
   border-bottom: 1px solid #000;
