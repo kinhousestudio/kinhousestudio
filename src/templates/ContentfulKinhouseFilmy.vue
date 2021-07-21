@@ -93,8 +93,10 @@
     </div>
         </div>
     </div>
-    <button class="galleryButton wstecz" @click="wstecz"><<</button>
-    <button class="galleryButton dalej" @click="dalej">>></button>
+    <div class="buttons">
+    <button class="galleryButton wstecz" @click="wstecz"><</button>
+    <button class="galleryButton dalej" @click="dalej">></button>
+    </div>
     <!-- <p>{{howManyPhotos}}</p>
     <p>{{howManyNumber}}</p>
     <p>{{howFar}}</p> -->
@@ -197,6 +199,8 @@ export default {
     const userLang = navigator.language || navigator.userLanguage;
     userLang == 'pl' ? this.lang = true : this.lang = false;
     gsap.from('#app', 2, { opacity: 0, delay: 0});
+    gsap.from('.kinhouse', 2, { opacity: 0, delay: 2});
+
     this.howManyPhotos.push(document.getElementsByClassName("foto"));
 
     this.howManyNumber = this.howManyPhotos[0].length;
@@ -310,10 +314,7 @@ export default {
   }
 </page-query>
 <style>
-.player {
-  text-align: center;
-  margin: 200px auto;
-}
+
 h2.title {
   border-bottom: 0;
 }
@@ -342,11 +343,12 @@ ul li {
 .kinhouse a {
   color: #fff;
   position:fixed;
-  text-shadow: 2px 2px #ff0000;
+  text-shadow: 3px 3px #000000;
   z-index: 100;
   top:0; left: 0;
   width: auto;
   height: 3vh;
+  opacity: 1;
 
   padding: 3vh 3vw;
 }
@@ -356,6 +358,11 @@ ul li {
 
 
 @media  (orientation: landscape) {
+  .player {
+    text-align: center;
+    margin: 200px auto;
+  }
+
   article {
     padding: 0 15vw;
     position: relative;
@@ -463,20 +470,28 @@ ul li {
 }
 .galleryButton {
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid white;
   background-color: white;
   opacity: 0.2;
   width: 100px;
   height: 100px;
   font-size: 4em;
   position: relative;
-  top: -15vh; left: -10vw;
+  top: -50vh; left: 0vw;
   transition: 0.5s;
 
 }
 .galleryButton:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
+.buttons {
+  width: 84vw;
+  margin: 0 0 0 -10vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3vw;
+}
+
 
 
 
@@ -548,8 +563,8 @@ ul li {
 
   }
   .foto img {
-    width: 144%;
-    margin: 0 0 0 -22%;
+    width: 100%;
+    margin: 0 ;
     height: 100%;
     padding: 0;
     object-fit: cover;
@@ -563,6 +578,7 @@ ul li {
   }
  iframe {
    max-width: 90vw!important;
+   max-height: 60vh!important;
 
  }
  .galleryButton {

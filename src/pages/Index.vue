@@ -183,13 +183,8 @@ export default {
 
 
     gsap.from(app, 2, { opacity: 0, delay: 0});
-    // tl.from('.intro_text', 3, { opacity: 0, delay: 2});
+    tl.from('.intro_text', 2, { opacity: 0, delay: 1});
 
-    // const RUCHY = document.querySelectorAll('.ruch');
-    //   RUCHY.forEach((ruch) => {
-    //           let wbok = Math.floor((Math.random() * 10) + 1) + 'vw'
-    //           gsap.to(ruch, 1, { x: wbok });
-    // });
 
 
   },
