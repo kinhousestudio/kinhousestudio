@@ -177,13 +177,14 @@ export default {
   },
   mounted() {
     const tl = new TimelineLite();
+    gsap.from(app, 2, { opacity: 0, delay: 1});
+    tl.from('.intro_text', 2, { opacity: 0, delay: 2});
     const userLang = navigator.language || navigator.userLanguage;
     userLang == 'pl' ? this.languare = 'polski' : this.languare = 'angielski';
     userLang == 'pl' ? this.lang2 = true : this.lang2 = false;
 
 
-    gsap.from(app, 2, { opacity: 0, delay: 0});
-    tl.from('.intro_text', 2, { opacity: 0, delay: 1});
+
 
 
 
@@ -217,7 +218,7 @@ export default {
 }
 @@keyframes start {
   from { opacity: 0;}
-  to {opacity: 1;}  
+  to {opacity: 1;}
 }
 
 h2 {
