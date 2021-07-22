@@ -90,12 +90,9 @@ text-decoration: none;
   padding-top: 15vh;
   width:90vw;
   margin: 0 auto;
-  animation: 1s width;
+
 }
-@keyframes width {
-  from { width: 0vw;}
-  to { width: 90vw;}
-}
+
 
 @media  (orientation: landscape) {
 .nav__link {

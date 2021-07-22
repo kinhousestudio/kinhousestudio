@@ -177,7 +177,7 @@ export default {
   },
   mounted() {
     const tl = new TimelineLite();
-    gsap.from(app, 2, { opacity: 0, delay: 1});
+    gsap.to(app, 2, { opacity: 1, delay: 1});
     tl.from('.intro_text', 2, { opacity: 0, delay: 2});
     const userLang = navigator.language || navigator.userLanguage;
     userLang == 'pl' ? this.languare = 'polski' : this.languare = 'angielski';
@@ -215,6 +215,7 @@ export default {
 <style>
 #app {
   animation: 2s start ;
+  opacity: 0;
 }
 @@keyframes start {
   from { opacity: 0;}
