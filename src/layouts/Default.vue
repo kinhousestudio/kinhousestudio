@@ -90,7 +90,6 @@ text-decoration: none;
   padding-top: 15vh;
   width:90vw;
   margin: 0 auto;
-  border: 3px solid red;
   animation: 1s width;
 }
 @keyframes width {
